@@ -30,11 +30,11 @@ public class VueloEntity {
     @Fetch(FetchMode.JOIN)
     private LugarEntity destino;
 
-    @Column(name = "hora_salida")
-    private Date horaSalida;
+    @Column(name = "salida")
+    private Date Salida;
 
-    @Column(name = "hora_llegada")
-    private Date horaLlegada;
+    @Column(name = "llegada")
+    private Date Llegada;
 
     @Column(name = "cantidad_asientos")
     private int cantidadAsientos;
@@ -75,20 +75,20 @@ public class VueloEntity {
         this.destino = destino;
     }
 
-    public Date getHoraSalida() {
-        return horaSalida;
+    public Date getSalida() {
+        return Salida;
     }
 
-    public void setHoraSalida(Date horaSalida) {
-        this.horaSalida = horaSalida;
+    public void setSalida(Date salida) {
+        Salida = salida;
     }
 
-    public Date getHoraLlegada() {
-        return horaLlegada;
+    public Date getLlegada() {
+        return Llegada;
     }
 
-    public void setHoraLlegada(Date horaLlegada) {
-        this.horaLlegada = horaLlegada;
+    public void setLlegada(Date llegada) {
+        Llegada = llegada;
     }
 
     public int getCantidadAsientos() {

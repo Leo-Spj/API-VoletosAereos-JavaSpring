@@ -1,12 +1,18 @@
 package com.webint.api_voletos_aereos.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 
 @Entity
 @Table(name = "segmento")
+@Getter // Sirve para que no haya que escribir los getters
+@Setter // Sirve para que no haya que escribir los setters
+@NoArgsConstructor // Sirve para que haya un constructor vacío
 public class SegmentoEntity {
 
     @Id
@@ -25,30 +31,4 @@ public class SegmentoEntity {
     private VueloEntity vuelo;
 
 
-    // Getters y setters
-
-
-    public int getSegmentoID() {
-        return segmentoID;
-    }
-
-    public void setSegmentoID(int segmentoID) {
-        this.segmentoID = segmentoID;
-    }
-
-    public ItinerarioEntity getItinerario() {
-        return itinerario;
-    }
-
-    public void setItinerario(ItinerarioEntity itinerario) {
-        this.itinerario = itinerario;
-    }
-
-    public VueloEntity getVuelo() {
-        return vuelo;
-    }
-
-    public void setVuelo(VueloEntity vuelo) {
-        this.vuelo = vuelo;
-    }
 }

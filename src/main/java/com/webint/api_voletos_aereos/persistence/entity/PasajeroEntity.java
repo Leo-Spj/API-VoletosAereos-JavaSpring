@@ -1,11 +1,17 @@
 package com.webint.api_voletos_aereos.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "pasajero")
+@Getter // Sirve para que no haya que escribir los getters
+@Setter // Sirve para que no haya que escribir los setters
+@NoArgsConstructor // Sirve para que haya un constructor vacío
 public class PasajeroEntity {
 
     @Id
@@ -22,38 +28,5 @@ public class PasajeroEntity {
     @Column(name = "dni", unique = true)
     private String dni;
 
-    // Getters y setters
 
-
-    public int getPasajeroID() {
-        return pasajeroID;
-    }
-
-    public void setPasajeroID(int pasajeroID) {
-        this.pasajeroID = pasajeroID;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
 }

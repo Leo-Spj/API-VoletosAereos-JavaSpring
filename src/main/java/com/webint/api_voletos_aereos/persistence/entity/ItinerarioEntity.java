@@ -1,11 +1,17 @@
 package com.webint.api_voletos_aereos.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "itinerario")
+@Getter // Sirve para que no haya que escribir los getters
+@Setter // Sirve para que no haya que escribir los setters
+@NoArgsConstructor // Sirve para que haya un constructor vacío
 public class ItinerarioEntity {
 
     @Id
@@ -18,22 +24,4 @@ public class ItinerarioEntity {
     @Fetch(FetchMode.JOIN)
     private ReservaEntity reserva;
 
-    // Getters y setters
-
-
-    public int getItinerarioID() {
-        return itinerarioID;
-    }
-
-    public void setItinerarioID(int itinerarioID) {
-        this.itinerarioID = itinerarioID;
-    }
-
-    public ReservaEntity getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(ReservaEntity reserva) {
-        this.reserva = reserva;
-    }
 }

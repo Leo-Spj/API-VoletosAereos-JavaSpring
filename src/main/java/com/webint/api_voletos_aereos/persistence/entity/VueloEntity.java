@@ -1,13 +1,19 @@
 package com.webint.api_voletos_aereos.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.sql.Date;
 
-@Entity
-@Table(name = "vuelo")
+@Entity // Sirve para indicar que la clase es una entidad
+@Table(name = "vuelo")  // Sirve para indicar el nombre de la tabla en la base de datos
+@Getter // Sirve para que no haya que escribir los getters
+@Setter // Sirve para que no haya que escribir los setters
+@NoArgsConstructor // Sirve para que haya un constructor vacío
 public class VueloEntity {
 
     @Id
@@ -42,68 +48,4 @@ public class VueloEntity {
     @Column(name = "asientos_disponibles")
     private int asientosDisponibles;
 
-    // Getters y setters
-    public int getVueloID() {
-        return vueloID;
-    }
-
-    public void setVueloID(int vueloID) {
-        this.vueloID = vueloID;
-    }
-
-    public AerolineaEntity getAerolinea() {
-        return aerolinea;
-    }
-
-    public void setAerolinea(AerolineaEntity aerolinea) {
-        this.aerolinea = aerolinea;
-    }
-
-    public LugarEntity getOrigen() {
-        return origen;
-    }
-
-    public void setOrigen(LugarEntity origen) {
-        this.origen = origen;
-    }
-
-    public LugarEntity getDestino() {
-        return destino;
-    }
-
-    public void setDestino(LugarEntity destino) {
-        this.destino = destino;
-    }
-
-    public Date getSalida() {
-        return Salida;
-    }
-
-    public void setSalida(Date salida) {
-        Salida = salida;
-    }
-
-    public Date getLlegada() {
-        return Llegada;
-    }
-
-    public void setLlegada(Date llegada) {
-        Llegada = llegada;
-    }
-
-    public int getCantidadAsientos() {
-        return cantidadAsientos;
-    }
-
-    public void setCantidadAsientos(int cantidadAsientos) {
-        this.cantidadAsientos = cantidadAsientos;
-    }
-
-    public int getAsientosDisponibles() {
-        return asientosDisponibles;
-    }
-
-    public void setAsientosDisponibles(int asientosDisponibles) {
-        this.asientosDisponibles = asientosDisponibles;
-    }
 }

@@ -1,9 +1,15 @@
 package com.webint.api_voletos_aereos.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "estado")
+@Getter // Sirve para que no haya que escribir los getters
+@Setter // Sirve para que no haya que escribir los setters
+@NoArgsConstructor // Sirve para que haya un constructor vacío
 public class EstadoEntity {
 
     @Id
@@ -13,23 +19,4 @@ public class EstadoEntity {
 
     @Column(name = "nomre_estado")
     private String nombreEstado;
-
-    // Getters y setters
-
-
-    public int getEstadoID() {
-        return estadoID;
-    }
-
-    public void setEstadoID(int estadoID) {
-        this.estadoID = estadoID;
-    }
-
-    public String getNombreEstado() {
-        return nombreEstado;
-    }
-
-    public void setNombreEstado(String nombreEstado) {
-        this.nombreEstado = nombreEstado;
-    }
 }

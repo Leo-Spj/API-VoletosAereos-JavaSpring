@@ -12,6 +12,24 @@ import lombok.Setter;
 @NoArgsConstructor // Sirve para que haya un constructor vacío
 public class AerolineaEntity implements GenericIdentifiable<Integer> {
 
+    /*
+    Para ignorar un atributo en la llamada: @JsonIgnore
+    Para vevitar un llamdo infinito en la llamada: @JsonIdentityInfo o tambien con @JsonIgnore
+    Para que no se cargue una relacion por ejemplo en @ManyToOne(fetch = FetchType.LAZY) usar el FetchType.LAZY
+
+    Valores por defecto para Fetch
+
+        LAZY: Solo se carga cuando se llama al metodo get
+        @OneToMany(fetch = FetchType.LAZY)
+        @ManyToMany(fetch = FetchType.LAZY)
+
+        EAGER: Carga la relacion siempre
+        @OneToOne(fetch = FetchType.EAGER)
+        @ManyToOne(fetch = FetchType.EAGER)
+
+     */
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "aerolineaid")

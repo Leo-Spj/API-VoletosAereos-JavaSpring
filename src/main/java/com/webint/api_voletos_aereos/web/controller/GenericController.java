@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-public class GenericController <S extends GenericService<E, ID, ?>, E, ID> { // ? significa que no se sabe el tipo de dato pero se infiere que es un CrudRepository
+public abstract class GenericController <S extends GenericService<E, ID, ?>, E, ID> { // ? significa que no se sabe el tipo de dato pero se infiere que es un CrudRepository
     private final S service;
 
     public GenericController(S service) {

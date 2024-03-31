@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter // Sirve para que no haya que escribir los getters
 @Setter // Sirve para que no haya que escribir los setters
 @NoArgsConstructor // Sirve para que haya un constructor vacío
-public class PasajeroEntity {
+public class PasajeroEntity  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

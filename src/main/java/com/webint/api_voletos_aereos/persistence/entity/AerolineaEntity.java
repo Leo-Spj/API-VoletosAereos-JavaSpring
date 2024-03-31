@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter // Sirve para que no haya que escribir los getters
 @Setter // Sirve para que no haya que escribir los setters
 @NoArgsConstructor // Sirve para que haya un constructor vacío
-public class AerolineaEntity {
+public class AerolineaEntity implements GenericIdentifiable<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,11 @@ public class AerolineaEntity {
 
     @Column(name = "nombre")
     private String nombre;
+
+    @Override
+    public Integer getID() {
+        return aerolineaID;
+    }
 
     // Getters y setters creados mediante Lombok con @Getter y @Setter en la clase
 

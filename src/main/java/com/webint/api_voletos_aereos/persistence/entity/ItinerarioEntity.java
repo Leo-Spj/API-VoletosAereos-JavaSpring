@@ -12,7 +12,7 @@ import org.hibernate.annotations.FetchMode;
 @Getter // Sirve para que no haya que escribir los getters
 @Setter // Sirve para que no haya que escribir los setters
 @NoArgsConstructor // Sirve para que haya un constructor vacío
-public class ItinerarioEntity {
+public class ItinerarioEntity implements GenericIdentifiable<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +24,8 @@ public class ItinerarioEntity {
     @Fetch(FetchMode.JOIN)
     private ReservaEntity reserva;
 
+    @Override
+    public Integer getID() {
+        return itinerarioID;
+    }
 }

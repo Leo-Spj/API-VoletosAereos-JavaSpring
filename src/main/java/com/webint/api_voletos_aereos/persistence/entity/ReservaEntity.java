@@ -14,7 +14,7 @@ import java.sql.Date;
 @Getter // Sirve para que no haya que escribir los getters
 @Setter // Sirve para que no haya que escribir los setters
 @NoArgsConstructor // Sirve para que haya un constructor vacío
-public class ReservaEntity {
+public class ReservaEntity implements GenericIdentifiable<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,4 +35,8 @@ public class ReservaEntity {
     private Date fechaReserva;
 
 
+    @Override
+    public Integer getID() {
+        return reservaID;
+    }
 }

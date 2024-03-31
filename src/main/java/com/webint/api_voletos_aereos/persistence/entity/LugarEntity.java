@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter // Sirve para que no haya que escribir los getters
 @Setter // Sirve para que no haya que escribir los setters
 @NoArgsConstructor // Sirve para que haya un constructor vacío
-public class LugarEntity {
+public class LugarEntity implements GenericIdentifiable<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +20,8 @@ public class LugarEntity {
     @Column(name = "nombre")
     private String nombre;
 
+    @Override
+    public Integer getID() {
+        return lugarID;
+    }
 }

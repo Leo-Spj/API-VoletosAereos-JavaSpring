@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/pasajero") // Sirve para indicar la URL base (general) para acceder a los métodos de esta clase
 public class PasajeroController extends GenericController<PasajeroService, PasajeroEntity, Integer> {
 
-
     public PasajeroController(PasajeroService service) {
         super(service);
     }

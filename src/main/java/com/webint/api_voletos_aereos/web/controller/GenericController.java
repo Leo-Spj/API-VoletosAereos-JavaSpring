@@ -19,13 +19,14 @@ public abstract class GenericController <S extends GenericService<E, ID, ?>, E, 
 
 // Metodos de Get. -> Obtienen elementos
 
-    @GetMapping
+    @GetMapping // Sirve para indicar que este método se ejecuta al hacer una petición GET a la URL base
     public ResponseEntity<List<E>> getAll() {
         return ResponseEntity.ok(service.getAll());
-    }
+    } // ResponseEntity.ok() sirve para devolver un estado de éxito 200
 
     @GetMapping("/{id}")
     public ResponseEntity<E> getById(@PathVariable ID id) {
+        // @PathVariable sirve para indicar que el valor de la variable id se obtiene de la URL
         return ResponseEntity.ok(service.getByID(id));
     }
 
@@ -34,12 +35,15 @@ public abstract class GenericController <S extends GenericService<E, ID, ?>, E, 
 
     @PostMapping
     public ResponseEntity<?> save(@RequestBody E entity) {
+        // @RequestBody sirve para indicar que el objeto vuelo se obtiene del cuerpo de la petición
         if (entity instanceof GenericIdentifiable) {
             GenericIdentifiable<ID> identifiableEntity = (GenericIdentifiable<ID>) entity;
             ID id = identifiableEntity.getID();
             System.out.println("id: " + id);
             if (service.exists(id)) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La entidad ya existe");
+                // ResponseEntity.status(HttpStatus.BAD_REQUEST) sirve para devolver un estado de error 400
+                // y el .body() para devolver un mensaje
             }
             return ResponseEntity.ok(service.save(entity));
         }
@@ -53,6 +57,7 @@ public abstract class GenericController <S extends GenericService<E, ID, ?>, E, 
     public ResponseEntity<E> update(@PathVariable ID id, @RequestBody E entity) {
         if (!service.exists(id)) {
             return ResponseEntity.badRequest().build();
+            // ResponseEntity.badRequest() sirve para devolver un estado de error 400 y el .build() para construir la respuesta
         }
         return ResponseEntity.ok(service.update(id, entity));
     }

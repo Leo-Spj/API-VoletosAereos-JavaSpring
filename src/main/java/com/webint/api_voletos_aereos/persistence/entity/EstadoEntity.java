@@ -17,7 +17,7 @@ public class EstadoEntity implements GenericIdentifiable<Integer> {
     @Column(name = "estadoid")
     private int estadoID;
 
-    @Column(name = "nomre_estado")
+    @Column(name = "nombre_estado")
     private String nombreEstado;
 
     @Override

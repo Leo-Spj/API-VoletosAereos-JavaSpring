@@ -2,6 +2,7 @@ package com.webint.api_voletos_aereos.web.controller;
 
 import com.webint.api_voletos_aereos.persistence.entity.GenericIdentifiable;
 import com.webint.api_voletos_aereos.service.GenericService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,15 +33,17 @@ public class GenericController <S extends GenericService<E, ID, ?>, E, ID> { // 
 // Metodo de Post -> Guardan elementos
 
     @PostMapping
-    public ResponseEntity<E> save(@RequestBody E entity) {
+    public ResponseEntity<?> save(@RequestBody E entity) {
         if (entity instanceof GenericIdentifiable) {
             GenericIdentifiable<ID> identifiableEntity = (GenericIdentifiable<ID>) entity;
             ID id = identifiableEntity.getID();
+            System.out.println("id: " + id);
             if (service.exists(id)) {
-                return ResponseEntity.badRequest().build();
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La entidad ya existe");
             }
+            return ResponseEntity.ok(service.save(entity));
         }
-        return ResponseEntity.ok(service.save(entity));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No se puede guardar la entidad porque no es identificable");
     }
 
 

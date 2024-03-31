@@ -66,12 +66,11 @@ public abstract class GenericController <S extends GenericService<E, ID, ?>, E, 
 // Metodo de Delete -> Eliminan elementos
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable ID id) {
+    public ResponseEntity<E> delete(@PathVariable ID id) {
         if (!service.exists(id)) {
             return ResponseEntity.badRequest().build();
         }
-        service.delete(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(service.delete(id));
     }
 }
 

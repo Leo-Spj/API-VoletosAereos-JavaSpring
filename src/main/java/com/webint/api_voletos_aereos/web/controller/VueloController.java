@@ -2,7 +2,6 @@ package com.webint.api_voletos_aereos.web.controller;
 
 import com.webint.api_voletos_aereos.persistence.entity.VueloEntity;
 import com.webint.api_voletos_aereos.service.VueloService;
-import org.springframework.http.HttpStatus; // Sirve para indicar el estado de la respuesta HTTP
 import org.springframework.http.ResponseEntity; // Sirve para devolver una respuesta HTTP
 import org.springframework.web.bind.annotation.*;
 
@@ -21,38 +20,38 @@ public class VueloController {
 // Metodos Get:
     @GetMapping // Sirve para indicar que este método se ejecuta al hacer una petición GET a la URL base
     public ResponseEntity<List<VueloEntity>> getVuelos() {
-        return ResponseEntity.ok(vueloService.getVuelos()); // ResponseEntity.ok() sirve para devolver un estado de éxito 200
+        return ResponseEntity.ok(vueloService.getAll()); // ResponseEntity.ok() sirve para devolver un estado de éxito 200
     }
 
     @GetMapping("/{id}")
         public ResponseEntity<VueloEntity> getVueloById(@PathVariable Integer id) { // @PathVariable sirve para indicar que el valor de la variable id se obtiene de la URL
-        return ResponseEntity.ok(vueloService.getVueloById(id));
+        return ResponseEntity.ok(vueloService.getByID(id));
     }
 
 // Metodos Post -> para guardar un vuelo
     @PostMapping
     public ResponseEntity<VueloEntity> saveVuelo(@RequestBody VueloEntity vuelo) { // @RequestBody sirve para indicar que el objeto vuelo se obtiene del cuerpo de la petición
-        if (vueloService.existsById(vuelo.getVueloID())) {
+        if (vueloService.exists(vuelo.getVueloID())) {
             return ResponseEntity.badRequest().build(); // ResponseEntity.badRequest() sirve para devolver un estado de error 400 y el .build() para construir la respuesta
         }
-        return ResponseEntity.ok(vueloService.saveVuelo(vuelo));
+        return ResponseEntity.ok(vueloService.save(vuelo));
     }
 
 // Metodos Put -> para actualizar un vuelo
     @PutMapping("/{id}")
     public ResponseEntity<VueloEntity> updateVuelo(@PathVariable Integer id, @RequestBody VueloEntity vuelo) {
-        if (!vueloService.existsById(id)) {
+        if (!vueloService.exists(id)) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(vueloService.updateVuelo(id, vuelo));
+        return ResponseEntity.ok(vueloService.update(id, vuelo));
     }
 
 // Metodo Delete -> para eliminar un vuelo
     @DeleteMapping("/{id}")
     public ResponseEntity<VueloEntity> deleteVuelo(@PathVariable Integer id) {
-        if (!vueloService.existsById(id)) {
+        if (!vueloService.exists(id)) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(vueloService.deleteVuelo(id));
+        return ResponseEntity.ok(vueloService.delete(id));
     }
 }

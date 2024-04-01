@@ -2,6 +2,8 @@ package com.webint.api_voletos_aereos.web.controller;
 
 import com.webint.api_voletos_aereos.persistence.entity.GenericIdentifiable;
 import com.webint.api_voletos_aereos.service.GenericService;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+@Getter
+@Setter
 public abstract class GenericController <S extends GenericService<E, ID, ?>, E, ID> { // ? significa que no se sabe el tipo de dato pero se infiere que es un CrudRepository
+
     private final S service;
 
     public GenericController(S service) {
